@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Thandeka ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 100%);
+            color: #333;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .heart {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: #ff69b4;
+            transform: rotate(45deg);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+            animation: floatHeart 6s infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: #ff69b4;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart::before {
+            left: -10px;
+        }
+
+        .heart::after {
+            top: -10px;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) rotate(45deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) rotate(45deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        section {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.15);
+        }
+
+        .hero {
+            text-align: center;
+            background: linear-gradient(135deg, #ff9ec8 0%, #ffb8d9 100%);
+            color: white;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease 0.3s backwards;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn {
+            background: white;
+            color: #ff69b4;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .hidden-message {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 1s ease;
+            margin-top: 30px;
+        }
+
+        .hidden-message.show {
+            max-height: 800px;
+        }
+
+        .message-content {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .message-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: typeIn 0.5s ease forwards;
+        }
+
+        @keyframes typeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .video-container {
+            margin-top: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            color: #ff69b4;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .reason-card {
+            background: linear-gradient(135deg, #fff5f9 0%, #ffe8f3 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #ff69b4;
+            transition: transform 0.3s ease;
+        }
+
+        .reason-card:hover {
+            transform: translateX(10px);
+        }
+
+        .reason-card h3 {
+            color: #ff1493;
+            margin-bottom: 10px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .question-section {
+            text-align: center;
+        }
+
+        .question-buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .question-btn {
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .yes-btn {
+            background: #ff69b4;
+            color: white;
+        }
+
+        .yes-btn:hover {
+            background: #ff1493;
+            transform: scale(1.1);
+        }
+
+        .no-btn {
+            background: #ddd;
+            color: #666;
+            position: relative;
+        }
+
+        .response-message {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            color: #ff1493;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .response-message.show {
+            opacity: 1;
+        }
+
+        .future-text {
+            font-size: 1.2rem;
+            line-height: 2;
+            text-align: center;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #ff69b4;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 40px 25px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .question-btn {
+                padding: 15px 35px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts background -->
+    <div id="hearts-container"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Thandeka</h1>
+        <p>I've been thinking about how to tell you this for a while now. There's something I need you to know, and I hope this little website shows you just how much you mean to me.</p>
+        <button class="btn" onclick="revealMessage()">Click to see what's on my mind</button>
+        
+        <div class="hidden-message" id="hiddenMessage">
+            <div class="message-content">
+                <p>Every time I'm with you, everything just feels right. You make the ordinary days feel special, and I can't imagine doing life without you by my side.</p>
+                <p>This song reminds me of us. I hope it makes you smile.</p>
+                <div class="video-container">
+                    <iframe id="youtubeVideo" width="100%" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Reasons Section -->
+        <section>
+            <h2>Why I'm so lucky to have you</h2>
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <h3>Your laugh</h3>
+                    <p>The way you laugh at my terrible jokes (even when they're not funny) makes my whole day. Your smile is literally contagious.</p>
+                </div>
+                <div class="reason-card">
+                    <h3>You get me</h3>
+                    <p>I don't have to explain myself with you. You just understand, even when I'm being weird or overthinking everything.</p>
+                </div>
+                <div class="reason-card">
+                    <h3>Late night talks</h3>
+                    <p>Those random 2AM conversations where we talk about everything and nothing? Those are my favorite moments. Time just disappears when I'm talking to you.</p>
+                </div>
+                <div class="reason-card">
+                    <h3>You make me better</h3>
+                    <p>You push me to be the best version of myself without even trying. Just being around you makes me want to do better.</p>
+                </div>
+                <div class="reason-card">
+                    <h3>Your energy</h3>
+                    <p>You have this way of lighting up a room. Even on tough days, you find a way to make things feel lighter.</p>
+                </div>
+                <div class="reason-card">
+                    <h3>You're my safe place</h3>
+                    <p>I can be completely myself with you. No filters, no pretending. That's rare and I never take it for granted.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Memories Section -->
+        <section>
+            <h2>Our Memories</h2>
+            <div class="gallery">
+                <img src="photo1.jpg" alt="Us together" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'300\'%3E%3Crect fill=\'%23ffb8d9\' width=\'400\' height=\'300\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'20\' fill=\'white\'%3EPhoto 1%3C/text%3E%3C/svg%3E'">
+                <img src="photo2.jpg" alt="Special moment" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'300\'%3E%3Crect fill=\'%23ff9ec8\' width=\'400\' height=\'300\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'20\' fill=\'white\'%3EPhoto 2%3C/text%3E%3C/svg%3E'">
+                <img src="photo3.jpg" alt="Another memory" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'300\'%3E%3Crect fill=\'%23ffcce5\' width=\'400\' height=\'300\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'20\' fill=\'white\'%3EPhoto 3%3C/text%3E%3C/svg%3E'">
+            </div>
+        </section>
+
+        <!-- Question Section -->
+        <section class="question-section">
+            <h2>One important question...</h2>
+            <p style="font-size: 1.3rem; margin: 20px 0;">Do you love me?</p>
+            <div class="question-buttons">
+                <button class="question-btn yes-btn" onclick="handleYes()">YES</button>
+                <button class="question-btn no-btn" id="noBtn" onmouseover="runAway(event)" ontouchstart="runAway(event)">NO</button>
+            </div>
+            <div class="response-message" id="responseMessage"></div>
+        </section>
+
+        <!-- Future Section -->
+        <section>
+            <h2>Looking Forward</h2>
+            <p class="future-text">
+                I don't know exactly what the future holds, but I know I want you in it. All the little moments, the big adventures, the lazy Sundays, the random road trips—I want to experience all of it with you. You're not just my girlfriend, you're my best friend, and I can't wait to see where this takes us. Here's to us, to more memories, and to everything we're going to build together.
+            </p>
+        </section>
+    </div>
+
+    <footer>
+        Made with ❤️ for Thandeka
+    </footer>
+
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 6 + 's';
+                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                container.appendChild(heart);
+            }
+        }
+
+        createHearts();
+
+        // Reveal hidden message and video
+        function revealMessage() {
+            const message = document.getElementById('hiddenMessage');
+            const video = document.getElementById('youtubeVideo');
+            message.classList.add('show');
+            video.src = 'https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1';
+            
+            // Animate paragraphs
+            const paragraphs = message.querySelectorAll('p');
+            paragraphs.forEach((p, index) => {
+                p.style.animationDelay = (index * 0.3) + 's';
+            });
+        }
+
+        // Handle YES button
+        function handleYes() {
+            const response = document.getElementById('responseMessage');
+            response.textContent = '❤️ I love you too, so much! You just made my day! ❤️';
+            response.classList.add('show');
+            
+            // Create celebration hearts
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.top = '100vh';
+                    heart.style.animationDuration = '2s';
+                    document.getElementById('hearts-container').appendChild(heart);
+                }, i * 100);
+            }
+        }
+
+        // Make NO button run away
+        function runAway(event) {
+            event.preventDefault();
+            const btn = document.getElementById('noBtn');
+            const maxX = window.innerWidth - btn.offsetWidth - 20;
+            const maxY = window.innerHeight - btn.offsetHeight - 20;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            btn.style.position = 'fixed';
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
+            btn.style.transition = 'all 0.3s ease';
+        }
+    </script>
+</body>
+</html>
